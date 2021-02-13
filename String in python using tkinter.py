@@ -1,0 +1,228 @@
+from tkinter import *
+from tkinter import messagebox
+from PIL import Image,ImageTk
+class MyWindow:
+    def __init__(self, win):
+        self.lb0=Label(win,text="GVK Chinmaya Vidyalaya",font=("Arial Bold", 20),bg="orange")
+        self.img1=Image.open("E:\online content\Logo 2.png")
+        self.test=ImageTk.PhotoImage(self.img1)
+        self.lbimg=Label(image=self.test)
+        self.lbimg.image=self.test
+        self.lbimg.place(x=625,y=200)
+        self.lbauthor=Label(win,text="Author:Chinthala Vijaya Kumar",bg="red")
+        self.lbauthor.place(x=650,y=600)
+        self.lbauthor1=Label(win,text="Email=vijay.mba.vsu@gmail.com",bg="red")
+        self.lbauthor1.place(x=650,y=620)
+        self.lbauthor2=Label(win,text="Mobile:9441868733",bg="red")
+        self.lbauthor2.place(x=650,y=640)
+        self.lbl1=Label(win, text='String',bg="Red")
+        #self.lbl2=Label(win, text='String 2')
+        self.lbl3=Label(win, text='Result',bg="Red")
+        self.t1=Entry(bd=3)
+        #self.t2=Entry()
+        self.t3=Entry()
+        #self.btn1 = Button(win, text='Capitalize')
+        #self.btn2=Button(win, text='Sub String')
+        #self.btn3=Button(win,text="isalnum()")
+        #self.btn4=Button(win,text="isalpha()")
+        self.lb0.place(x=500,y=100)
+        self.lbl1.place(x=100, y=50)
+        self.t1.place(x=150, y=50)
+        #self.lbl2.place(x=100, y=100)
+        #self.t2.place(x=200, y=100)
+        self.b1=Button(win, text='Capitalize',command=self.capitalize)
+        self.b2=Button(win, text='find',command=d_find)
+        self.b2.bind('<Button-1>', self.find)
+        self.b3=Button(win,text="isalnum()",command=d_isalnum)
+        self.b3.bind('<Button-1>',self.isalnum)
+        self.b4=Button(win,text="isalpha()",command=d_isalpha)
+        self.b4.bind('<Button-1>',self.isalpha)
+        self.b5=Button(win,text="isdigit()",command=d_isdigit)
+        self.b5.bind('<Button-1>',self.fisdigit)
+        self.b6=Button(win,text="isspace()",command=d_isspace)
+        self.b6.bind('<Button-1>',self.isspace)
+        self.b7=Button(win,text="islower()",command=d_islower)
+        self.b7.bind('<Button-1>',self.islower)
+        self.b8=Button(win,text="isupper()",command=d_isupper)
+        self.b8.bind('<Button-1>',self.isupper)
+        self.b9=Button(win,text="lower()",command=d_lower)
+        self.b9.bind('<Button-1>',self.lower)
+        self.b10=Button(win,text="upper()",command=d_upper)
+        self.b10.bind('<Button-1>',self.upper)    
+        self.b11=Button(win,text="title()",command=d_title)
+        self.b11.bind('<Button-1>',self.title)
+        self.b12=Button(win,text="Startswith",command=d_startswith)
+        self.b12.bind('<Button-1>',self.startswith)
+        self.b13=Button(win,text="Endswith",command=d_endwith)
+        self.b13.bind('<Button-1>',self.endswith)
+        self.b14=Button(win,text="Swap case",command=d_swapcase)
+        self.b14.bind('<Button-1>',self.swapcase)
+        self.b15=Button(win,text="partition",command=d_partition)
+        self.b15.bind('<Button-1>',self.partition)
+        self.b16=Button(win,text="Count",command=d_count)
+        self.b16.bind('<Button-1>',self.count)
+        self.b17=Button(win,text="Strip(a)",command=d_strip)
+        self.b17.bind('<Button-1>',self.strip)
+        self.b18=Button(win,text="lstrip(a)",command=d_lstrip)
+        self.b18.bind('<Button-1>',self.lstrip)
+        self.b19=Button(win,text='rstrip(a)',command=d_rstrip)
+        self.b19.bind('<Button-1>',self.rstrip)
+        self.b1.place(x=100, y=150)
+        self.b2.place(x=200, y=150)
+        self.b3.place(x=300,y=150)
+        self.b4.place(x=400,y=150)
+        self.b5.place(x=100, y=250)
+        self.b6.place(x=200, y=250)
+        self.b7.place(x=300,y=250)
+        self.b8.place(x=400,y=250)
+        self.b9.place(x=100, y=350)
+        self.b10.place(x=200, y=350)
+        self.b11.place(x=300,y=350)
+        self.b12.place(x=400,y=350)
+        self.b13.place(x=100, y=450)
+        self.b14.place(x=200, y=450)
+        self.b15.place(x=300,y=450)
+        self.b16.place(x=400,y=450)
+        self.b17.place(x=100, y=550)
+        self.b18.place(x=200, y=550)
+        self.b19.place(x=300,y=550)
+        self.lbl3.place(x=450, y=550)
+        self.t3.place(x=500, y=550)
+    def capitalize(self):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).capitalize()
+        self.t3.insert(END, str(result))
+    def find(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).find("a")
+        self.t3.insert(END, str(result))
+    def isalnum(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).isalnum()
+        self.t3.insert(END, str(result)) 
+    def isalpha(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).isalpha()
+        self.t3.insert(END, str(result))     
+    def fisdigit(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).isdigit()
+        self.t3.insert(END, str(result))
+    def isspace(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).isspace()
+        self.t3.insert(END, str(result))
+    def islower(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).islower()
+        self.t3.insert(END, str(result)) 
+    def isupper(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).isupper()
+        self.t3.insert(END, str(result)) 
+    def lower(self,event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).lower()
+        self.t3.insert(END, str(result))
+    def upper(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).upper()
+        self.t3.insert(END, str(result))
+    def title(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).title()
+        self.t3.insert(END, str(result)) 
+    def startswith(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).startswith("a")
+        self.t3.insert(END, str(result))   
+    def endswith(self,event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).endswith("a")
+        self.t3.insert(END, str(result))
+    def swapcase(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).swapcase()
+        self.t3.insert(END, str(result))
+    def partition(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).partition("a")
+        self.t3.insert(END, str(result)) 
+    def count(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).count("a")
+        self.t3.insert(END, str(result))
+    def strip(self,event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).strip("a")
+        self.t3.insert(END, str(result))
+    def rstrip(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).rstrip("a")
+        self.t3.insert(END, str(result))
+    def lstrip(self, event):
+        self.t3.delete(0, 'end')
+        num1=self.t1.get()
+        result=str(num1).lstrip("a")
+        self.t3.insert(END, str(result))      
+def d_find():
+        messagebox.showinfo( "find", "Returns the lowest index in the string <str> where the sub string 'a' is found with in the slice range of start and end. Returns -1 if sub not found") 
+def d_capitalize():
+        messagebox.showinfo( "Capitalize", "The capitalize() method returns a string where the first character is upper case.")      
+def d_isalnum():
+        messagebox.showinfo( "isalnum", "Returns True if all characters in the string are alphanumeric")
+def d_isalpha():
+        messagebox.showinfo( "isalpha", "Returns True if all characters in the string are in the alphabet")
+def d_isdigit():
+        messagebox.showinfo( "isdigit", "Returns True if all characters in the string are digits")
+def d_isspace():
+        messagebox.showinfo( "isspace", "Returns True if all characters in the string are whitespaces")
+def d_islower():
+        messagebox.showinfo( "islower", "Returns True if all characters in the string are lower case")
+def d_isupper():
+        messagebox.showinfo( "isupper", "Returns True if all characters in the string are upper case")    
+def d_lower():
+        messagebox.showinfo( "lower", "Converts a string into lower case")      
+def d_upper():
+        messagebox.showinfo( "upper", "Converts a string into upper case")
+def d_title():
+        messagebox.showinfo( "title", "Converts the first character of each word to upper case")
+def d_startswith():
+        messagebox.showinfo( "Starts with", "Returns true if the string starts with the specified (Here it is 'a') value")
+def d_endwith():
+        messagebox.showinfo( "Ends with", "Returns true if the string ends with the specified (Here it is 'a') value")
+def d_swapcase():
+        messagebox.showinfo( "Swap case", "Swaps cases, lower case becomes upper case and vice versa")
+def d_partition():
+        messagebox.showinfo( "Partition", "Returns a tuple where the string is parted into three parts")    
+def d_count():
+        messagebox.showinfo( "Count", "Returns the number of times a specified value(here it is 'a') occurs in a string")
+def d_strip():
+        messagebox.showinfo( "Strip", "Returns a trimmed version of the string")
+def d_rstrip():
+        messagebox.showinfo( "rstrip", "Returns a right trim version of the string")
+def d_lstrip():
+        messagebox.showinfo( "lstrip", "Returns a left trim version of the string")         
+window=Tk()
+mywin=MyWindow(window)
+window.title('String Functions in Python using tkinter')
+window.geometry("900x700+10+10")
+window.mainloop()
